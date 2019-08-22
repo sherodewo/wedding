@@ -11,6 +11,7 @@
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
     <meta name="msapplication-tap-highlight" content="no">
     @include('admin.layouts.styles')
+    @include('admin.layouts.scripts')
     @include('admin.layouts.header')
     @include('admin.layouts.setting')
 {{--            sidebar--}}
@@ -19,5 +20,5 @@
     @include('admin.layouts.wrapper')
 {{--            footer--}}
     @include('admin.layouts.footer')
-    @include('admin.layouts.scripts')
+
 </html>

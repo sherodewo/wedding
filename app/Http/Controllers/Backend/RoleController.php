@@ -8,7 +8,7 @@ use App\Models\Role;
 use App\Services\Backend\Role\RoleService;
 use function foo\func;
 use Illuminate\Http\Request;
-use Datatables;
+use DataTables;
 
 class RoleController extends Controller
 {
@@ -25,7 +25,7 @@ class RoleController extends Controller
     public function dataTables()
     {
         $role = numrows(Role::all());
-        return Datatables::of($role)
+        return DataTables::of($role)
             ->addColumn('action', function ($role) {
                 return
                 '<a href="'.route('role.show', $role->id).'" class="btn btn-primary btn-circle btn-sm "><i class="fas fa-search"></i></a>

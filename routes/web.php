@@ -53,5 +53,21 @@ Route::put('user/update/{id}', ['as' => 'user.update', 'uses' => 'Backend\UserCo
 Route::get('user/delete/{id}', ['as' => 'user.delete', 'uses' => 'Backend\UserController@destroy']);
 Route::resource('user','Backend\UserController');
 
-#frontend
+# KebayaController
+Route::get('kebaya/export', ['as' => 'kebaya.export','uses' => 'Backend\KebayaController@export']);
+Route::get('kebaya/imp', ['as' => 'kebaya.imp','uses' => 'Backend\KebayaController@imp']);
+Route::post('kebaya/import', ['as' => 'kebaya.import','uses' => 'Backend\KebayaController@import']);
+Route::get('kebaya', ['as' => 'kebaya.index','uses' => 'Backend\KebayaController@index']);
+Route::get('kebaya/datatables', ['as' => 'kebaya.datatables', 'uses' => 'Backend\KebayaController@dataTables']);
+Route::get('kebaya/show/{id}', ['as' => 'kebaya.show', 'uses' => 'Backend\KebayaController@show']);
+Route::get('kebaya/create', ['as' => 'kebaya.create', 'uses' => 'Backend\KebayaController@create']);
+Route::post('kebaya/create', ['as' => 'kebaya.store', 'uses' => 'Backend\KebayaController@store']);
+Route::get('kebaya/edit/{id}', ['as' => 'kebaya.edit', 'uses' => 'Backend\KebayaController@edit']);
+Route::put('kebaya/update/{id}', ['as' => 'kebaya.update', 'uses' => 'Backend\KebayaController@update']);
+Route::get('kebaya/delete/{id}', ['as' => 'kebaya.delete', 'uses' => 'Backend\KebayaController@destroy']);
+Route::resource('kebaya','Backend\KebayaController');
+
+#--------frontend--------------#
 Route::get('frontend', ['as' => 'frontend.index','uses' => 'Frontend\FrontController@index']);
+Route::get('pulsa', ['as' => 'frontend.pulsa.index','uses' => 'Frontend\PulsaController@index']);
+Route::get('history', ['as' => 'frontend.history.index','uses' => 'Frontend\HistoryController@index']);

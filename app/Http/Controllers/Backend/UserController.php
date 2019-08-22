@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Backend\User\CreateUserRequest;
 use App\Models\User;
 use App\Services\Backend\User\UserService;
 use function foo\func;
 use Illuminate\Http\Request;
-use Datatables;
+use DataTables;
+use Laravel\Passport\HasApiTokens;
 
 class UserController extends Controller
 {
@@ -25,7 +25,7 @@ class UserController extends Controller
     public function dataTables()
     {
         $data = numrows(User::all());
-        return Datatables::of($data)
+        return DataTables::of($data)
             ->addColumn('action', function ($data) {
                 return
                 '<a href="'.route('user.show', $data->id).'" class="btn btn-primary btn-circle btn-sm "><i class="fas fa-search"></i></a>
@@ -67,18 +67,18 @@ class UserController extends Controller
      * @param User $data
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show(User $user)
+    public function show(User $data)
     {
-        return view('admin.backend.users.show',compact('user'));
+        return view('admin.backend.users.show',compact('data'));
     }
 
     /**
      * @param User $user
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit(User $user)
+    public function edit(User $data)
     {
-        return view('admin.backend.users.edit',compact('user'));
+        return view('admin.backend.users.edit',compact('data'));
     }
 
     /**
@@ -86,14 +86,14 @@ class UserController extends Controller
      * @param User $data
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, User $data)
     {
         $request->validate([
             'name' => 'required|max:255',
-            'email' => 'required|max:255|email||unique:users,email,'.$user->id.',id',
+            'email' => 'required|max:255|email||unique:users,email,'.$data->id.',id',
             'password' => 'required|min:8'
         ]);
-        $user->update($request->all());
+        $data->update($request->all());
         return redirect('/user')->with('success', 'User has been updated');
     }
 

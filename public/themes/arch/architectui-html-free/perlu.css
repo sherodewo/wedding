@@ -1,0 +1,28 @@
+
+@media only screen and (max-width: 450px) {
+    .order-pulsa .mob-fixed {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+    .order-pulsa .mob-fixed .card-footer {
+        flex-direction: column;
+    }
+    .order-pulsa .detail-panel {
+        display: none;
+    }
+    .order-pulsa .card-default {
+        margin-bottom: 50px;
+    }
+    .order-pulsa #submit {
+        width: 100%;
+        margin-top: 10px;
+    }
+    .app-header {
+        display: none;
+    }
+    .fixed-header .app-main {
+        padding-top: 0
+    }
+}

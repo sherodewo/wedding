@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use function foo\func;
 use Illuminate\Http\Request;
-use Datatables;
+use DataTables;
 
 
 class MenuController extends Controller
@@ -20,7 +20,7 @@ class MenuController extends Controller
     public function datatables()
     {
         $data = numrows(Menu::all());
-        return Datatables::of($data)
+        return DataTables::of($data)
             ->addColumn('action', function ($data) {
                 return
                 '<a href="'.route('user.show', $data->id).'" class="btn btn-primary btn-circle btn-sm "><i class="fas fa-search"></i></a>
